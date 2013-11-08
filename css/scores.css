@@ -1,0 +1,30 @@
+* {
+	font-family: Arial, sans-serif;
+}
+
+#scores {
+	text-align: center;
+}
+
+table {
+	width: 95%;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+table thead {
+	font-weight: bold;
+}
+
+table tr td:nth-child(1) { width: 40%; text-align: left; }
+table tr td:nth-child(2) { width: 20%; }
+table tr td:nth-child(3) { width: 20%; }
+table tr td:nth-child(4) { width: 20%; }
+
+table tbody tr:nth-child(odd) {
+	background-color: #D1DAFF;
+}
+
+td {
+	padding: 5px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>Tetris Clone</title>
+	<link rel="stylesheet" media="screen" href="css/scores.css" />
+</head>
+<body>
+	<div id="scores">
+		<h2>High Scores</h2>
+		<br />
+		<table>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Score</td>
+					<td>Lines</td>
+					<td>Time</td>
+				</tr>
+			</thead>
+			<tbody id="tableData">
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+
+		if (window.localStorage) {
+			for (var i=0; i<localStorage.length; i++) {
+				key = localStorage.key(i);
+				data = JSON.parse(localStorage.getItem(key));
+
+				newRow = document.createElement("tr");
+				
+				nameCell = document.createElement("td");
+				nameText = document.createTextNode(data.username);
+				nameCell.appendChild(nameText);
+
+				scoreCell = document.createElement("td");
+				scoreText = document.createTextNode(data.score);
+				scoreCell.appendChild(scoreText);
+
+				lineCell = document.createElement("td");
+				lineText = document.createTextNode(data.totalLines);
+				lineCell.appendChild(lineText);
+
+				timeCell = document.createElement("td");
+				timeText = document.createTextNode(data.roundTime);
+				timeCell.appendChild(timeText);
+
+				newRow.appendChild(nameCell);
+				newRow.appendChild(scoreCell);
+				newRow.appendChild(lineCell);
+				newRow.appendChild(timeCell);
+
+				document.getElementById("tableData").appendChild(newRow);
+			}
+		}
+
+	</script>
+
+</body>
+</html>

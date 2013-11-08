@@ -1,0 +1,19 @@
+#thePit {
+	border: 1px solid black;
+	margin: 0px auto;
+	padding: 0;
+	position: relative;
+}
+
+#status {
+	border: 1px solid black;
+	margin: 0;
+	padding: 0;
+	width: 40px;
+	height: 30px;
+	line-height: 2.80em;
+	text-align: center;
+	font-size: 0.65em;
+	font-family: Arial, sans-serif;
+	float: left;
+}

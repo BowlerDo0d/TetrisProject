@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Tetris Clone</title>
+	<link rel="stylesheet" media="screen" href="css/main.css" />
+	<link rel="apple-touch-icon" sizes="76x76" href="images/tetrisIcon.png" />
+	<link rel="apple-touch-startup-image" href="images/tetrisSplash.png" />
+</head>
+<body>
+
+	<div id="menuContainer">
+		<h2 id="menuTitle">TETRIS CLONE</h2>
+		<div id="playButton">New Game</div>
+		<div id="scoreButton">High Scores</div>
+		<div id="quitButton">Quit</div>
+	</div>
+
+	<script type="text/javascript">
+		if (window.DeviceOrientationEvent) {
+			window.addEventListener("load", handleOrientation, false);
+			window.addEventListener("orientationchange", handleOrientation, false);
+
+			function handleOrientation(e) {
+				if (window.orientation == 90 || window.orientation == -90) {
+					document.getElementById("menuContainer").setAttribute("class","menuButtonContainerLandscape");
+					document.getElementById("menuTitle").setAttribute("class","titleLandscape");
+					document.getElementById("playButton").setAttribute("class","menuButtonLandscape");
+					document.getElementById("scoreButton").setAttribute("class","menuButtonLandscape");
+					document.getElementById("quitButton").setAttribute("class","menuButtonLandscape");
+				} else {
+					document.getElementById("menuContainer").setAttribute("class","menuButtonContainerPortrait");
+					document.getElementById("menuTitle").setAttribute("class","titlePortrait");
+					document.getElementById("playButton").setAttribute("class","menuButtonPortrait");
+					document.getElementById("scoreButton").setAttribute("class","menuButtonPortrait");
+					document.getElementById("quitButton").setAttribute("class","menuButtonPortrait");
+				}
+			}
+
+			window.addEventListener("touchstart",function(e){e.preventDefault();},false);
+
+			document.getElementById("playButton").addEventListener("touchend",function(e){
+				if (e.changedTouches.length == 1) {
+					if (window.orientation == 90 || window.orientation == -90) {
+						orientationString = "Landscape";
+					} else {
+						orientationString = "Portrait";
+					}
+
+					if (confirm('You are starting the game in:\n\'' + orientationString + ' Mode\'\n\nContinue?')) {
+						window.location = "game.html";
+					}
+				}
+			},false);
+			document.getElementById("scoreButton").addEventListener("touchend",function(e){
+				if (e.changedTouches.length == 1) {
+					window.location = "scores.html";
+				}
+			},false);
+			document.getElementById("quitButton").addEventListener("touchend",function(e){
+				if (e.changedTouches.length == 1) {
+					if (confirm('Are you sure you wish to quit?')) {
+						window.close();
+					}
+				}
+			},false);
+
+			if (window.localStorage) {
+				if (localStorage.length > 0){
+					// High scores option is hidden unless scores exist on the device
+					document.getElementById("scoreButton").style.display = "inline-block";
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>
